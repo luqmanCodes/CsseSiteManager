@@ -7,7 +7,7 @@
     tools:context=".AddOrderActivity">
 
     <Spinner
-        android:id="@+id/spnItems"
+        android:id="@+id/spnAoItems"
         android:layout_width="315dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
@@ -45,7 +45,7 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/lvAddedOrders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnItems" />
+        app:layout_constraintTop_toBottomOf="@+id/spnAoItems" />
 
     <Button
         android:id="@+id/btnAoAdd"
@@ -60,6 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toEndOf="@+id/txtAoQty"
-        app:layout_constraintTop_toBottomOf="@+id/spnItems"
+        app:layout_constraintTop_toBottomOf="@+id/spnAoItems"
         app:layout_constraintVertical_bias="0.562" />
 </android.support.constraint.ConstraintLayout>

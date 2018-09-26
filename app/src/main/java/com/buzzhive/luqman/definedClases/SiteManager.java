@@ -4,11 +4,13 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class SiteManager {
     private String siteManagerId;
     private static SiteManager singleInstance = null;
-    private static boolean isLogedIn = false;
+    private static boolean isLoggedIn = false;
+    private static OrderBuilder orderBuilder = new OrderBuilder();
 
     private SiteManager(String siteManagerId) {
         this.siteManagerId = siteManagerId;
@@ -17,25 +19,30 @@ public class SiteManager {
         if(singleInstance != null)
             return false;
         singleInstance = new SiteManager(id);
-        isLogedIn = true;
+        isLoggedIn = true;
         return true;
     }
-    public static boolean logOut() {
+    public static boolean loggOut() {
         singleInstance = null;
-        isLogedIn = false;
+        isLoggedIn = false;
         return true;
     }
-    public static boolean isLogedIn() {
-        return isLogedIn;
+    public static boolean isLoggedIn() {
+        return isLoggedIn;
     }
     public static void automaticRedirectToLogout(Context context) {
-        if(!isLogedIn)
+        if(!isLoggedIn)
             ChangeActivityIntentHelper.redirectToLogin(context);
     }
-
-    public static SiteManager getInstance() {
-        return (isLogedIn) ? singleInstance : null;
+    public static OrderBuilder getOrderBuilder() {
+        if(!isLoggedIn())
+            return null;
+        return orderBuilder;
     }
+    public static SiteManager getInstance() {
+        return (isLoggedIn) ? singleInstance : null;
+    }
+
     public ArrayList<Item> getItems(){
         return new ArrayList<Item>(Arrays.asList(new Item[]{
                 new Item("Cement",0),
@@ -46,4 +53,14 @@ public class SiteManager {
                 new Item("Pipes",6)
         }));
     };
+
+    public List<String> getOnlyItemNames() {
+        ArrayList<Item> items = this.getItems();
+        List<String> itemNames = new ArrayList<String>();
+        for( Item i : items)
+            itemNames.add(i.getItemName());
+        return itemNames;
+    }
+
+
 }
