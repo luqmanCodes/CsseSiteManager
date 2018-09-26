@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.buzzhive.luqman.definedClases.Item;
+import com.buzzhive.luqman.definedClases.SiteManager;
 import com.buzzhive.luqman.sitemanager.R;
 
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class AddOrderItemAdapter extends BaseAdapter {
 
     private ArrayList<Item> items;
     LayoutInflater mInflater;
-    public AddOrderItemAdapter(Context context,ArrayList<Item> items) {
+
+    public AddOrderItemAdapter(Context context, ArrayList<Item> items) {
         this.items = items;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -37,13 +39,19 @@ public class AddOrderItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
 
         View v = mInflater.inflate(R.layout.add_order_list_item,null);
         TextView addOrderItemName = (TextView) v.findViewById(R.id.addOrderItemName);
         TextView addOrderItemQuantity = (TextView) v.findViewById(R.id.addOrderItemQuantity);
         Button btnAORemove = (Button) v.findViewById(R.id.btnAORemove);
-
+        btnAORemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SiteManager.getOrderBuilder().removeItem(i);
+                notifyDataSetChanged();
+            }
+        });
         addOrderItemName.setText(items.get(i).getItemName());
         addOrderItemQuantity.setText(items.get(i).getQuantity()+"");
         return v;

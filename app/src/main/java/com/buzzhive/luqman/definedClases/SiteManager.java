@@ -44,7 +44,7 @@ public class SiteManager {
     }
 
     public ArrayList<Item> getItems(){
-        return new ArrayList<Item>(Arrays.asList(new Item[]{
+         return new ArrayList<Item>(Arrays.asList(new Item[]{
                 new Item("Cement",0),
                 new Item("Steel",1),
                 new Item("Wood",3),
@@ -57,6 +57,7 @@ public class SiteManager {
     public List<String> getOnlyItemNames() {
         ArrayList<Item> items = this.getItems();
         List<String> itemNames = new ArrayList<String>();
+        itemNames.add("Select An Item");
         for( Item i : items)
             itemNames.add(i.getItemName());
         return itemNames;
