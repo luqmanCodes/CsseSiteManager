@@ -1,9 +1,12 @@
 package com.buzzhive.luqman.definedClases;
 
-import java.util.ArrayList;
+import android.util.Log;
+
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class OrderBuilder {
+
     private ArrayList<Item> items;
     private String siteManagerId;
     private String status;
@@ -15,8 +18,15 @@ public class OrderBuilder {
     public ArrayList<Item> getItems() {
         return items;
     }
+
     public OrderBuilder addItem(Item item) {
+
         this.items.add(item);
+        for(Item tempItem : this.items) {
+            if(tempItem.getItemId() == item.getItemId()) {
+                Log.d("item",tempItem.getItemName());
+            }
+        }
         return this;
     }
     public OrderBuilder removeItem(int id) {

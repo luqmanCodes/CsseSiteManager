@@ -3,6 +3,7 @@ package com.buzzhive.luqman.sitemanager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,19 +36,25 @@ public class AddOrderActivity extends AppCompatActivity {
         this.setTitle("Add Order");
         final Context thisClass = this;
         SiteManager.automaticRedirectToLogout(this);
-        sm = SiteManager.getInstance();
-        itemList = sm.getItems();
-        lvAddedOrders = (ListView) findViewById(R.id.lvAddedOrders);
-        spnAoItems = (Spinner) findViewById(R.id.spnAoItems);
-        txtAoQty = (TextView) findViewById(R.id.txtAoQty);
-        btnAoAdd = (Button) findViewById(R.id.btnAoAdd);
+        this.sm = SiteManager.getInstance();
 
+        this.itemList = sm.getItems();
+        this.lvAddedOrders = (ListView) findViewById(R.id.lvAddedOrders);
+        this.spnAoItems = (Spinner) findViewById(R.id.spnAoItems);
+        this.txtAoQty = (TextView) findViewById(R.id.txtAoQty);
+        this.btnAoAdd = (Button) findViewById(R.id.btnAoAdd);
 
-        ArrayAdapter<String> itemsSpinnerAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,sm.getOnlyItemNames());
-        spnAoItems.setAdapter(itemsSpinnerAdapter);
+        LayoutInflater lf = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View headerView = lf.inflate(R.layout.add_order_list_header,null);
+        this.lvAddedOrders.addHeaderView(headerView);
+        ArrayAdapter<String> itemsSpinnerAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,sm.getOnlyItemNames(itemList));
+        this.spnAoItems.setAdapter(itemsSpinnerAdapter);
 
+        AddOrderItemAdapter addOrderItemAdapter = new AddOrderItemAdapter(this,sm.getOrderBuilder().getItems());
+        lvAddedOrders.setAdapter(addOrderItemAdapter);
         this.reInstateAdapter();
-        spnAoItems.setOnItemSelectedListener(new ListView.OnItemSelectedListener(){
+
+        this.spnAoItems.setOnItemSelectedListener(new ListView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i != 0)
@@ -56,12 +63,14 @@ public class AddOrderActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
-        btnAoAdd.setOnClickListener(new View.OnClickListener() {
+        this.btnAoAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(selectedItem != null && txtAoQty.getText().length() != 0) {
                     selectedItem.setQuantity(Integer.parseInt(txtAoQty.getText().toString()));
                     sm.getOrderBuilder().addItem(selectedItem);
+                    spnAoItems.setSelection(0);
+                    selectedItem = null;
                     reInstateAdapter();
                 } else {
                     Toast addItemErrToast = Toast.makeText(thisClass,"Fill Quantity and select an item",Toast.LENGTH_LONG);
@@ -71,7 +80,6 @@ public class AddOrderActivity extends AppCompatActivity {
         });
     }
     public void reInstateAdapter() {
-        AddOrderItemAdapter addOrderItemAdapter = new AddOrderItemAdapter(this,sm.getOrderBuilder().getItems());
-        lvAddedOrders.setAdapter(addOrderItemAdapter);
+        lvAddedOrders.deferNotifyDataSetChanged();
     }
 }

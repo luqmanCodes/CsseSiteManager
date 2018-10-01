@@ -21,18 +21,18 @@
     <ListView
         android:id="@+id/lvAddedOrders"
         style="@android:style/Widget.Holo.Light.ListView"
-        android:layout_width="334dp"
+        android:layout_width="380dp"
         android:layout_height="334dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="84dp"
         android:background="@color/colorPrimary"
         android:dividerHeight="5sp"
+        android:headerDividersEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/txtAoQty"
         android:layout_width="209dp"

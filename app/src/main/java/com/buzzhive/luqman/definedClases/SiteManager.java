@@ -54,11 +54,10 @@ public class SiteManager {
         }));
     }
 
-    public List<String> getOnlyItemNames() {
-        ArrayList<Item> items = this.getItems();
+    public List<String> getOnlyItemNames(ArrayList<Item> tItems) {
         List<String> itemNames = new ArrayList<String>();
         itemNames.add("Select An Item");
-        for( Item i : items)
+        for( Item i : tItems)
             itemNames.add(i.getItemName());
         return itemNames;
     }
