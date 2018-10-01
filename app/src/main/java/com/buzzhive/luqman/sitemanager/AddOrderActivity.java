@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.buzzhive.luqman.definedClases.Item;
 import com.buzzhive.luqman.definedClases.SiteManager;
@@ -30,16 +31,18 @@ public class AddOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_order);
+        this.setContentView(R.layout.activity_add_order);
         this.setTitle("Add Order");
+        final Context thisClass = this;
         SiteManager.automaticRedirectToLogout(this);
         sm = SiteManager.getInstance();
         itemList = sm.getItems();
-        final Context thisClass = this;
         lvAddedOrders = (ListView) findViewById(R.id.lvAddedOrders);
         spnAoItems = (Spinner) findViewById(R.id.spnAoItems);
         txtAoQty = (TextView) findViewById(R.id.txtAoQty);
         btnAoAdd = (Button) findViewById(R.id.btnAoAdd);
+
+
         ArrayAdapter<String> itemsSpinnerAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,sm.getOnlyItemNames());
         spnAoItems.setAdapter(itemsSpinnerAdapter);
 
@@ -61,6 +64,8 @@ public class AddOrderActivity extends AppCompatActivity {
                     sm.getOrderBuilder().addItem(selectedItem);
                     reInstateAdapter();
                 } else {
+                    Toast addItemErrToast = Toast.makeText(thisClass,"Fill Quantity and select an item",Toast.LENGTH_LONG);
+                    addItemErrToast.show();
                 }
             }
         });

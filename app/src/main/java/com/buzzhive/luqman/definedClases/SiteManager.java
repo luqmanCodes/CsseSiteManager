@@ -52,7 +52,7 @@ public class SiteManager {
                 new Item("Marble",5),
                 new Item("Pipes",6)
         }));
-    };
+    }
 
     public List<String> getOnlyItemNames() {
         ArrayList<Item> items = this.getItems();
