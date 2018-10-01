@@ -48,12 +48,12 @@ public class AddOrderItemAdapter extends BaseAdapter {
         btnAORemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SiteManager.getOrderBuilder().removeItem(i);
+                SiteManager.getInstance().getOrderBuilder().removeItem(i);
                 notifyDataSetChanged();
             }
         });
         addOrderItemName.setText(items.get(i).getItemName());
-        addOrderItemQuantity.setText(items.get(i).getQuantity()+"");
+        addOrderItemQuantity.setText(String.format("%d", items.get(i).getQuantity()));
         return v;
     }
 }
