@@ -43,7 +43,8 @@ public class SiteManager {
     }
 
     public ArrayList<Item> getItems(){
-         return new ArrayList<>(Arrays.asList(new Item("Cement",0),
+         return new ArrayList<>(Arrays.asList(
+                 new Item("Cement",0),
                  new Item("Steel",1),
                  new Item("Wood",3),
                  new Item("Rocks",4),
@@ -51,7 +52,9 @@ public class SiteManager {
                  new Item("Pipes",6))
          );
     }
-
+    public String getSiteManagerId() {
+        return this.siteManagerId;
+    }
     public List<String> getOnlyItemNames(ArrayList<Item> tItems) {
         List<String> itemNames = new ArrayList<>();
         itemNames.add("Select An Item");

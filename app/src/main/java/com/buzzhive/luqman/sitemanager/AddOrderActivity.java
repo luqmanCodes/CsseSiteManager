@@ -7,15 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.buzzhive.luqman.definedClases.DateHelper;
 import com.buzzhive.luqman.definedClases.Item;
+import com.buzzhive.luqman.definedClases.PurchaseOrder;
 import com.buzzhive.luqman.definedClases.SiteManager;
 import com.buzzhive.luqman.listAdapters.AddOrderItemAdapter;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class AddOrderActivity extends AppCompatActivity {
@@ -23,6 +28,7 @@ public class AddOrderActivity extends AppCompatActivity {
     private ListView lvAddedOrders;
     private Spinner spnAoItems;
     private TextView txtAoQty;
+    private EditText txtAOExpArivalDate;
     private ArrayList<Item> itemList;
 
     @Override
@@ -37,6 +43,7 @@ public class AddOrderActivity extends AppCompatActivity {
         this.lvAddedOrders = (ListView) findViewById(R.id.lvAddedOrders);
         this.spnAoItems = (Spinner) findViewById(R.id.spnAoItems);
         this.txtAoQty = (TextView) findViewById(R.id.txtAoQty);
+        this.txtAOExpArivalDate = (EditText) findViewById(R.id.txtAOExpArivalDate);
         Button btnAoAdd = (Button) findViewById(R.id.btnAoAdd);
         Button btnAOAddOrder = (Button) findViewById(R.id.btnAOAddOrder);
 
@@ -67,6 +74,26 @@ public class AddOrderActivity extends AppCompatActivity {
         btnAOAddOrder.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                try {
+                    Date expArrivalDate = DateHelper.getDateFromString(txtAOExpArivalDate.getText().toString());
+                    if(DateHelper.validateDate(expArrivalDate)) {
+                        PurchaseOrder po = SiteManager.getInstance().getOrderBuilder()
+                                .setSiteManagerId(SiteManager.getInstance().getSiteManagerId())
+                                .setStatus("PENDING")
+                                .setInitialDate(DateHelper.getNowSQLDate())
+                                .setExpectedDate(expArrivalDate)
+                                .buildOrderAsObject();
+                    } else {
+                        Toast dateErrToast = Toast.makeText(thisClass,"Invalid Date",Toast.LENGTH_LONG);
+                        dateErrToast.show();
+                    }
+                }catch(ParseException ex) {
+                     Toast dateErrToast = Toast.makeText(thisClass,"Invalid Date",Toast.LENGTH_LONG);
+                     dateErrToast.show();
+                }catch(IllegalStateException ise) {
+                    Toast dateErrToast = Toast.makeText(thisClass,ise.getMessage(),Toast.LENGTH_LONG);
+                    dateErrToast.show();
+                }
 
             }
         });

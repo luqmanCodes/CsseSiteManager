@@ -9,6 +9,7 @@ public class OrderBuilder {
     private String siteManagerId;
     private String status;
     private Date initialDate;
+    private Date expectedDate;
 
     public OrderBuilder() {
         this.items = new ArrayList<Item>();
@@ -58,12 +59,34 @@ public class OrderBuilder {
         this.initialDate = initialDate;
         return this;
     }
-    public PurchaseOrder buildOrderAsObject() {
-        return new PurchaseOrder(
-            this.siteManagerId,
-            this.items,
-            this.status,
-            this.initialDate
-        );
+
+    public Date getExpectedDate() {
+        return expectedDate;
+    }
+
+    public OrderBuilder setExpectedDate(Date expectedDate) {
+        this.expectedDate = expectedDate;
+        return this;
+    }
+
+    public PurchaseOrder buildOrderAsObject() throws IllegalStateException {
+        if(items.size() == 0) {
+            throw new IllegalStateException("No items in Order");
+        }
+        else if (this.siteManagerId.isEmpty() || this.status.isEmpty()
+                || this.getInitialDate() == null || this.expectedDate == null){
+            throw new IllegalStateException("Purchase Object fields missing");
+        }
+        else {
+            PurchaseOrder temp = new PurchaseOrder(
+                    this.siteManagerId,
+                    this.items,
+                    this.status,
+                    this.initialDate,
+                    this.expectedDate
+            );
+            this.items = new ArrayList<>();
+            return temp;
+        }
     }
 }
