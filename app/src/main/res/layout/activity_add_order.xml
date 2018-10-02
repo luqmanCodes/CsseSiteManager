@@ -21,18 +21,18 @@
     <ListView
         android:id="@+id/lvAddedOrders"
         style="@android:style/Widget.Holo.Light.ListView"
-        android:layout_width="334dp"
+        android:layout_width="380dp"
         android:layout_height="334dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="84dp"
         android:background="@color/colorPrimary"
         android:dividerHeight="5sp"
+        android:headerDividersEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent" />
-
     <EditText
         android:id="@+id/txtAoQty"
         android:layout_width="209dp"
@@ -62,4 +62,31 @@
         app:layout_constraintStart_toEndOf="@+id/txtAoQty"
         app:layout_constraintTop_toBottomOf="@+id/spnAoItems"
         app:layout_constraintVertical_bias="0.562" />
+
+    <Button
+        android:id="@+id/btnAOAddOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Add Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtAOExpArivalDate"
+        app:layout_constraintTop_toBottomOf="@+id/lvAddedOrders" />
+
+    <EditText
+        android:id="@+id/txtAOExpArivalDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Expected Arrival Date"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lvAddedOrders" />
 </android.support.constraint.ConstraintLayout>

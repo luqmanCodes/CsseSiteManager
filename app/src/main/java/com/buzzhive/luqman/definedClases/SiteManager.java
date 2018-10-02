@@ -10,7 +10,7 @@ public class SiteManager {
     private String siteManagerId;
     private static SiteManager singleInstance = null;
     private static boolean isLoggedIn = false;
-    private static OrderBuilder orderBuilder = new OrderBuilder();
+    private OrderBuilder orderBuilder = new OrderBuilder();
 
     private SiteManager(String siteManagerId) {
         this.siteManagerId = siteManagerId;
@@ -22,7 +22,7 @@ public class SiteManager {
         isLoggedIn = true;
         return true;
     }
-    public static boolean loggOut() {
+    public boolean loggOut() {
         singleInstance = null;
         isLoggedIn = false;
         return true;
@@ -30,13 +30,12 @@ public class SiteManager {
     public static boolean isLoggedIn() {
         return isLoggedIn;
     }
+
     public static void automaticRedirectToLogout(Context context) {
         if(!isLoggedIn)
             ChangeActivityIntentHelper.redirectToLogin(context);
     }
-    public static OrderBuilder getOrderBuilder() {
-        if(!isLoggedIn())
-            return null;
+    public OrderBuilder getOrderBuilder() {
         return orderBuilder;
     }
     public static SiteManager getInstance() {
@@ -44,21 +43,22 @@ public class SiteManager {
     }
 
     public ArrayList<Item> getItems(){
-         return new ArrayList<Item>(Arrays.asList(new Item[]{
-                new Item("Cement",0),
-                new Item("Steel",1),
-                new Item("Wood",3),
-                new Item("Rocks",4),
-                new Item("Marble",5),
-                new Item("Pipes",6)
-        }));
+         return new ArrayList<>(Arrays.asList(
+                 new Item("Cement",0),
+                 new Item("Steel",1),
+                 new Item("Wood",3),
+                 new Item("Rocks",4),
+                 new Item("Marble",5),
+                 new Item("Pipes",6))
+         );
     }
-
-    public List<String> getOnlyItemNames() {
-        ArrayList<Item> items = this.getItems();
-        List<String> itemNames = new ArrayList<String>();
+    public String getSiteManagerId() {
+        return this.siteManagerId;
+    }
+    public List<String> getOnlyItemNames(ArrayList<Item> tItems) {
+        List<String> itemNames = new ArrayList<>();
         itemNames.add("Select An Item");
-        for( Item i : items)
+        for( Item i : tItems)
             itemNames.add(i.getItemName());
         return itemNames;
     }

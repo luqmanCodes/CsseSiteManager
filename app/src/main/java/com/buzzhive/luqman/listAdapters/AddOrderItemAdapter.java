@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.buzzhive.luqman.definedClases.Item;
@@ -44,16 +44,16 @@ public class AddOrderItemAdapter extends BaseAdapter {
         View v = mInflater.inflate(R.layout.add_order_list_item,null);
         TextView addOrderItemName = (TextView) v.findViewById(R.id.addOrderItemName);
         TextView addOrderItemQuantity = (TextView) v.findViewById(R.id.addOrderItemQuantity);
-        Button btnAORemove = (Button) v.findViewById(R.id.btnAORemove);
+        ImageButton btnAORemove = (ImageButton) v.findViewById(R.id.btnAORemove);
         btnAORemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SiteManager.getOrderBuilder().removeItem(i);
+                SiteManager.getInstance().getOrderBuilder().removeItem(i);
                 notifyDataSetChanged();
             }
         });
         addOrderItemName.setText(items.get(i).getItemName());
-        addOrderItemQuantity.setText(items.get(i).getQuantity()+"");
+        addOrderItemQuantity.setText(String.format("%d", items.get(i).getQuantity()));
         return v;
     }
 }
