@@ -39,8 +39,8 @@ public class VeiwOrderItemAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = mInflator.inflate(R.layout.veiw_order_list_item,null);
-        TextView txtVOItemName = (TextView) v.findViewById(R.id.txtVOItemName);
-        TextView txtVOItemQuantity = (TextView) v.findViewById(R.id.txtVOItemQuantity);
+        TextView txtVOItemName = (TextView) v.findViewById(R.id.txtVOListItemName);
+        TextView txtVOItemQuantity = (TextView) v.findViewById(R.id.txtVOListItemQuantity);
 
         txtVOItemName.setText(listItems.get(i).getItemName());
         txtVOItemQuantity.setText(listItems.get(i).getQuantity());
