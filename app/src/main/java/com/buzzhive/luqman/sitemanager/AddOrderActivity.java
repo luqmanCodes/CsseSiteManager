@@ -53,7 +53,6 @@ public class AddOrderActivity extends AppCompatActivity {
         ArrayAdapter<String> itemsSpinnerAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,SiteManager.getInstance().getOnlyItemNames(itemList));
         this.spnAoItems.setAdapter(itemsSpinnerAdapter);
 
-
         this.reInstateAdapter();
 
         btnAoAdd.setOnClickListener(new View.OnClickListener() {

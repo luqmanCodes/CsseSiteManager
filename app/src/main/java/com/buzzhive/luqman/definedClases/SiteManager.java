@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SiteManager {
+
     private String siteManagerId;
     private static SiteManager singleInstance = null;
     private static boolean isLoggedIn = false;
@@ -51,6 +52,63 @@ public class SiteManager {
                  new Item("Marble",5),
                  new Item("Pipes",6))
          );
+    }
+
+    public ArrayList<PurchaseOrder> getAllPurchaseOrders() {
+        return new ArrayList<PurchaseOrder>(Arrays.asList(
+           new PurchaseOrder(
+                   3,
+             getSiteManagerId(),
+             new ArrayList<Item>(Arrays.asList(
+                     new Item("Cement",0,5)
+             )),
+             "PENDING",
+             DateHelper.getNowSQLDate(),
+             DateHelper.getNowSQLDate()
+           )
+        ));
+    }
+    public ArrayList<PurchaseOrder> getAllRejectedPurchaseOrders() {
+        return new ArrayList<PurchaseOrder>(Arrays.asList(
+                new PurchaseOrder(
+                        1,
+                        getSiteManagerId(),
+                        new ArrayList<Item>(Arrays.asList(
+                                new Item("Cement",0,5)
+                        )),
+                        "REJECTED",
+                        DateHelper.getNowSQLDate(),
+                        DateHelper.getNowSQLDate()
+                )
+        ));
+    }
+    public ArrayList<PurchaseOrder> getAllApprovedPurchaseOrders() {
+        return new ArrayList<PurchaseOrder>(Arrays.asList(
+                new PurchaseOrder(
+                        4,
+                        getSiteManagerId(),
+                        new ArrayList<Item>(Arrays.asList(
+                                new Item("Cement",0,5)
+                        )),
+                        "SUPPLIER_APPROVED",
+                        DateHelper.getNowSQLDate(),
+                        DateHelper.getNowSQLDate()
+                )
+        ));
+    }
+    public ArrayList<PurchaseOrder> getAllPendingPurchaseOrders() {
+        return new ArrayList<PurchaseOrder>(Arrays.asList(
+                new PurchaseOrder(
+                        7,
+                        getSiteManagerId(),
+                        new ArrayList<Item>(Arrays.asList(
+                                new Item("Cement",0,5)
+                        )),
+                        "PENDING",
+                        DateHelper.getNowSQLDate(),
+                        DateHelper.getNowSQLDate()
+                )
+        ));
     }
     public String getSiteManagerId() {
         return this.siteManagerId;

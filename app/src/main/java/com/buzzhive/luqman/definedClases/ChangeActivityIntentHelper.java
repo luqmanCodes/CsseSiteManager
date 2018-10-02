@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.buzzhive.luqman.sitemanager.LoginActivity;
+import com.buzzhive.luqman.sitemanager.VeiwOrders;
 
 public class ChangeActivityIntentHelper extends BaseAdapter {
     @Override
@@ -37,4 +38,8 @@ public class ChangeActivityIntentHelper extends BaseAdapter {
         Intent toActivity = new Intent(context,activity);
         context.startActivity(toActivity);
     }
-}
+    public static void redirectToVeiwOrderSetType(Context context,String type) {
+        Intent toVeiwOrder = new Intent(context,VeiwOrders.class);
+        toVeiwOrder.putExtra("orderType",type);
+        context.startActivity(toVeiwOrder);
+    }}

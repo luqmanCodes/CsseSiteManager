@@ -31,14 +31,14 @@
         android:layout_marginBottom="16dp"
         android:text="Veiw Previous Orders"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/butApprovedOrders"
+        app:layout_constraintBottom_toTopOf="@+id/btnApprovedOrders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAddOrder" />
 
     <Button
-        android:id="@+id/butApprovedOrders"
+        android:id="@+id/btnApprovedOrders"
         android:layout_width="213dp"
         android:layout_height="63dp"
         android:layout_marginStart="8dp"
@@ -47,13 +47,13 @@
         android:layout_marginBottom="16dp"
         android:text="Approved Orders"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/butRejectedOrders"
+        app:layout_constraintBottom_toTopOf="@+id/btnRejectedOrders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnVeiwOrders" />
 
     <Button
-        android:id="@+id/butRejectedOrders"
+        android:id="@+id/btnRejectedOrders"
         android:layout_width="200dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
@@ -62,14 +62,14 @@
         android:layout_marginBottom="16dp"
         android:text="Rejected Orders"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/butPendingOrders"
+        app:layout_constraintBottom_toTopOf="@+id/btnPendingOrders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butApprovedOrders"
+        app:layout_constraintTop_toBottomOf="@+id/btnApprovedOrders"
         app:layout_constraintVertical_bias="0.266" />
 
     <Button
-        android:id="@+id/butPendingOrders"
+        android:id="@+id/btnPendingOrders"
         android:layout_width="192dp"
         android:layout_height="62dp"
         android:layout_marginStart="8dp"
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/butRejectedOrders" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRejectedOrders" />
 
     <Button
         android:id="@+id/butLogOut"

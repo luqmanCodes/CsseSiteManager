@@ -1,6 +1,7 @@
 package com.buzzhive.luqman.listAdapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,8 @@ public class VeiwOrderItemAdapter extends BaseAdapter {
         View v = mInflator.inflate(R.layout.veiw_order_list_item,null);
         TextView txtVOItemName = (TextView) v.findViewById(R.id.txtVOListItemName);
         TextView txtVOItemQuantity = (TextView) v.findViewById(R.id.txtVOListItemQuantity);
-
         txtVOItemName.setText(listItems.get(i).getItemName());
-        txtVOItemQuantity.setText(listItems.get(i).getQuantity());
+        txtVOItemQuantity.setText(String.format("%d",listItems.get(i).getQuantity()));
         return v;
     }
 }
