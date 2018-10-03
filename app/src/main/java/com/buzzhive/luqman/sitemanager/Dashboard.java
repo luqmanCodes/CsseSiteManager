@@ -1,6 +1,5 @@
 package com.buzzhive.luqman.sitemanager;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -17,45 +16,49 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         this.setTitle("Site Manager Dashboard");
-        final Context thisClass = this;
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
         StrictMode.setThreadPolicy(policy);
-
-        SiteManager.logIn("SM101","");
         SiteManager.automaticRedirectToLogout(this);
         AndroidNetworking.initialize(getApplicationContext());
 
         findViewById(R.id.btnAddOrder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChangeActivityIntentHelper.redirectToActivity(thisClass,AddOrderActivity.class);
+                ChangeActivityIntentHelper.redirectToActivity(getApplicationContext(),AddOrderActivity.class);
             }
         });
         findViewById(R.id.btnVeiwOrders).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(thisClass,"All");
+                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(getApplicationContext(),"All");
             }
         });
         findViewById(R.id.btnApprovedOrders).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(thisClass,"Approved");
+                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(getApplicationContext(),"Approved");
             }
         });
         findViewById(R.id.btnRejectedOrders).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(thisClass,"Rejected");
+                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(getApplicationContext(),"Rejected");
             }
         });
         findViewById(R.id.btnPendingOrders).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(thisClass,"Pending");
+                ChangeActivityIntentHelper.redirectToVeiwOrderSetType(getApplicationContext(),"Pending");
             }
         });
+        findViewById(R.id.btnLogOut).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SiteManager.getInstance().loggOut();
+                ChangeActivityIntentHelper.redirectToLogin(getApplicationContext());
+            }
+        });
+
 
     }
 }

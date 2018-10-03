@@ -16,7 +16,7 @@ public class  SiteManager {
     private String siteManagerId;
     private static SiteManager singleInstance = null;
     private static boolean isLoggedIn = false;
-    private static final String baseURL = "http://192.168.43.46:9000";
+    public static final String baseURL = "http://192.168.43.46:9000";
     private OrderBuilder orderBuilder = new OrderBuilder();
 
     private SiteManager(String siteManagerId) {

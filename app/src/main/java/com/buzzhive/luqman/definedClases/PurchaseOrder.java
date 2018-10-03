@@ -40,7 +40,7 @@ public class PurchaseOrder implements Serializable {
         return status;
     }
 
-    public Date getinitiatedDate() {
+    public Date getInitialDate() {
         return initiatedDate;
     }
 
