@@ -10,22 +10,22 @@ public class PurchaseOrder implements Serializable {
     private String siteManagerId;
     private ArrayList<Item> items;
     private String status;
-    private Date initialDate;
+    private Date initiatedDate;
     private Date expectedDate;
 
-    public PurchaseOrder(String siteManagerId, ArrayList<Item> items, String status, Date initialDate, Date expectedDate) {
+    public PurchaseOrder(String siteManagerId, ArrayList<Item> items, String status, Date initiatedDate, Date expectedDate) {
         this.siteManagerId = siteManagerId;
         this.items = items;
         this.status = status;
-        this.initialDate = initialDate;
+        this.initiatedDate = initiatedDate;
         this.expectedDate = expectedDate;
     }
-    public PurchaseOrder(int orderId,String siteManagerId, ArrayList<Item> items, String status, Date initialDate, Date expectedDate) {
+    public PurchaseOrder(int orderId,String siteManagerId, ArrayList<Item> items, String status, Date initiatedDate, Date expectedDate) {
         this.orderId = orderId;
         this.siteManagerId = siteManagerId;
         this.items = items;
         this.status = status;
-        this.initialDate = initialDate;
+        this.initiatedDate = initiatedDate;
         this.expectedDate = expectedDate;
     }
     public String getSiteManagerId() {
@@ -40,8 +40,8 @@ public class PurchaseOrder implements Serializable {
         return status;
     }
 
-    public Date getInitialDate() {
-        return initialDate;
+    public Date getinitiatedDate() {
+        return initiatedDate;
     }
 
     public int getOrderId() {

@@ -2,9 +2,11 @@ package com.buzzhive.luqman.sitemanager;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.androidnetworking.AndroidNetworking;
 import com.buzzhive.luqman.definedClases.ChangeActivityIntentHelper;
 import com.buzzhive.luqman.definedClases.SiteManager;
 
@@ -16,8 +18,13 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         this.setTitle("Site Manager Dashboard");
         final Context thisClass = this;
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
+        StrictMode.setThreadPolicy(policy);
+
         SiteManager.logIn("SM101","");
         SiteManager.automaticRedirectToLogout(this);
+        AndroidNetworking.initialize(getApplicationContext());
 
         findViewById(R.id.btnAddOrder).setOnClickListener(new View.OnClickListener() {
             @Override

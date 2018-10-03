@@ -1,35 +1,35 @@
 package com.buzzhive.luqman.definedClases;
 
 public class Item {
-    private String itemName;
-    private int itemId;
+    private String name;
+    private int id;
     private int quantity;
 
     public Item(String itemName, int itemId, int quantity) {
-        this.itemName = itemName;
-        this.itemId = itemId;
+        this.name = itemName;
+        this.id = itemId;
         this.quantity = quantity;
     }
 
     public Item(String itemName, int itemId) {
-        this.itemName = itemName;
-        this.itemId = itemId;
+        this.name = itemName;
+        this.id = itemId;
     }
 
     public String getItemName() {
-        return itemName;
+        return name;
     }
 
     public void setItemName(String itemName) {
-        this.itemName = itemName;
+        this.name = itemName;
     }
 
     public int getItemId() {
-        return itemId;
+        return id;
     }
 
     public void setItemId(int itemId) {
-        this.itemId = itemId;
+        this.id = itemId;
     }
 
     public int getQuantity() {

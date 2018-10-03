@@ -39,7 +39,7 @@ public class AddOrderActivity extends AppCompatActivity {
         final Context thisClass = this;
         SiteManager.automaticRedirectToLogout(this);
 
-        this.itemList = SiteManager.getInstance().getItems();
+        this.itemList = SiteManager.getInstance().getItems(getApplicationContext());
         this.lvAddedOrders = (ListView) findViewById(R.id.lvAddedOrders);
         this.spnAoItems = (Spinner) findViewById(R.id.spnAoItems);
         this.txtAoQty = (TextView) findViewById(R.id.txtAoQty);
