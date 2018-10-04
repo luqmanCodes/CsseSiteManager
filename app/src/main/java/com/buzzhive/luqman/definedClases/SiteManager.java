@@ -50,8 +50,7 @@ public class  SiteManager {
     }
 
     public ArrayList<Item> getItems(Context con){
-        String uri = String.format("%s/item",baseURL);
-        final ArrayList<Item> itemArrayList = new ArrayList<>();
+        String uri = baseURL.concat("/item");
         ANRequest request = AndroidNetworking.get(uri).build();
         ANResponse<List<Item>> response = request.executeForObjectList(Item.class);
         if(response.isSuccess()) {
@@ -60,8 +59,7 @@ public class  SiteManager {
             Toast t = Toast.makeText(con,response.getError().getErrorDetail(),Toast.LENGTH_LONG);
             t.show();
         }
-
-        return itemArrayList;
+        return null;
     }
 
     public ArrayList<PurchaseOrder> getAllPurchaseOrders() {

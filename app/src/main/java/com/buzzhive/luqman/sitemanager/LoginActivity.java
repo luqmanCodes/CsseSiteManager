@@ -310,7 +310,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            Log.d("error","came");
             JSONObject obj = new JSONObject();
             try {
                 obj.put("id",mEmail);
