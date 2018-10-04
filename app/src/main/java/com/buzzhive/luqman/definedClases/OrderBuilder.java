@@ -1,5 +1,10 @@
 package com.buzzhive.luqman.definedClases;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -87,6 +92,30 @@ public class OrderBuilder {
             );
             this.items = new ArrayList<>();
             return temp;
+        }
+    }
+    public JSONObject buildOrderAsJSONObject() throws IllegalStateException {
+        if(items.size() == 0) {
+            throw new IllegalStateException("No items in Order");
+        }
+        else if (this.siteManagerId.isEmpty() || this.status.isEmpty()
+                || this.getInitialDate() == null || this.expectedDate == null){
+            throw new IllegalStateException("Purchase Object fields missing");
+        }
+        else {
+            Log.d("dint","please");
+            JSONObject retobject = new JSONObject();
+            try {
+                retobject.put("siteManagerId",getSiteManagerId());
+                retobject.put("items",getItems());
+                retobject.put("status",getStatus());
+                retobject.put("initiatedDate",getInitialDate().toString());
+                retobject.put("expectedDate",getExpectedDate().toString());
+            }catch(JSONException jsex) {
+                Log.d("happends",jsex.getMessage());
+            }
+            Log.d("obj",retobject.toString());
+            return retobject;
         }
     }
 }

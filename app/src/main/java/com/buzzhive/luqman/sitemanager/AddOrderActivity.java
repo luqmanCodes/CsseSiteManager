@@ -13,11 +13,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.buzzhive.luqman.definedClases.DateHelper;
 import com.buzzhive.luqman.definedClases.Item;
 import com.buzzhive.luqman.definedClases.PurchaseOrder;
 import com.buzzhive.luqman.definedClases.SiteManager;
 import com.buzzhive.luqman.listAdapters.AddOrderItemAdapter;
+
+import org.json.JSONObject;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -82,6 +87,22 @@ public class AddOrderActivity extends AppCompatActivity {
                                 .setInitialDate(DateHelper.getNowSQLDate())
                                 .setExpectedDate(expArrivalDate)
                                 .buildOrderAsObject();
+                        AndroidNetworking.post(SiteManager.baseURL.concat("/purchaseOrders"))
+                                .addApplicationJsonBody(po)
+                                .setContentType("application/json;charset=UTF-8")
+                                .build()
+                                .getAsJSONObject(new JSONObjectRequestListener() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                    }
+
+                                    @Override
+                                    public void onError(ANError anError) {
+                                        Toast t1 = Toast.makeText(getApplicationContext(),anError.getErrorBody(),Toast.LENGTH_LONG);
+                                        t1.show();
+                                    }
+                                });
+
                     } else {
                         Toast dateErrToast = Toast.makeText(thisClass,"Invalid Date",Toast.LENGTH_LONG);
                         dateErrToast.show();

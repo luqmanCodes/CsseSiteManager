@@ -15,7 +15,9 @@ public class Item {
         this.name = itemName;
         this.id = itemId;
     }
-
+    public String toString(){
+        return String.format("{'itemId':%d,'quantity':%d}",this.id,this.quantity);
+    }
     public String getItemName() {
         return name;
     }
