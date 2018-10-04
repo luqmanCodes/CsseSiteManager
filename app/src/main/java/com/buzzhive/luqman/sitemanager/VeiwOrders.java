@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.buzzhive.luqman.definedClases.ChangeActivityIntentHelper;
@@ -25,12 +24,8 @@ public class VeiwOrders extends AppCompatActivity {
             ChangeActivityIntentHelper.redirectToActivity(this, Dashboard.class);
         ordersType = getIntent().getStringExtra("orderType");
         this.setTitle(String.format("%s Orders", ordersType));
-        VeiwOrderHelper.setOrdersToBeViewedByType(ordersType);
-
         ListView lvVOsPOlist = (ListView) findViewById(R.id.lvVOsPOList);
-        lvVOsPOlist.setAdapter(new ArrayAdapter<Integer>(this, R.layout.support_simple_spinner_dropdown_item,
-                VeiwOrderHelper.getOnlyPurchaseOrderIds(VeiwOrderHelper.getOrdersToBeVeiwed()))
-        );
+        VeiwOrderHelper.setOrdersToBeViewedByType(getApplicationContext(),lvVOsPOlist,ordersType);
         lvVOsPOlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -39,5 +34,14 @@ public class VeiwOrders extends AppCompatActivity {
                 startActivity(toVeiwOrder);
             }
         });
+    }
+
+    public static class GoodReciptApprove extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_good_recipt_approve);
+        }
     }
 }

@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 public class PurchaseOrder implements Serializable {
 
-    private int orderId;
+    private int id;
     private String siteManagerId;
     private ArrayList<Item> items;
     private String status;
     private Date initiatedDate;
     private Date expectedDate;
+    private double totalAmount;
 
     public PurchaseOrder(String siteManagerId, ArrayList<Item> items, String status, Date initiatedDate, Date expectedDate) {
         this.siteManagerId = siteManagerId;
@@ -20,13 +21,17 @@ public class PurchaseOrder implements Serializable {
         this.initiatedDate = initiatedDate;
         this.expectedDate = expectedDate;
     }
-    public PurchaseOrder(int orderId,String siteManagerId, ArrayList<Item> items, String status, Date initiatedDate, Date expectedDate) {
-        this.orderId = orderId;
+    public PurchaseOrder(int id,String siteManagerId, ArrayList<Item> items, String status, Date initiatedDate, Date expectedDate) {
+        this.id = id;
         this.siteManagerId = siteManagerId;
         this.items = items;
         this.status = status;
         this.initiatedDate = initiatedDate;
         this.expectedDate = expectedDate;
+    }
+    public PurchaseOrder(int id,Date initiatedDate) {
+        this.id = id;
+        this.initiatedDate = initiatedDate;
     }
     public String getSiteManagerId() {
         return siteManagerId;
@@ -45,7 +50,7 @@ public class PurchaseOrder implements Serializable {
     }
 
     public int getOrderId() {
-        return orderId;
+        return id;
     }
 
     public Date getExpectedDate() {

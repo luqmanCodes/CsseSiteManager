@@ -11,10 +11,19 @@ public class DateHelper {
     public static boolean validateDate(Date date) {
         return date.after(new java.util.Date());
     }
+
     public static Date getDateFromString(String stringDate) throws ParseException {
         stringDate.replace('-','/');
         java.util.Date parsedDate = format.parse(stringDate);
         return new Date(parsedDate.getTime());
+    }
+    public static Date getDateFromJSONString(String stringDate)  {
+        SimpleDateFormat jsonDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            java.util.Date parsedDate = jsonDateFormat.parse(stringDate);
+            return new Date(parsedDate.getTime());
+        }catch(ParseException pe){}
+        return null;
     }
     public static Date getNowSQLDate() {
         java.util.Date nowDate = new java.util.Date();

@@ -52,6 +52,12 @@ public class Dashboard extends AppCompatActivity {
                 ChangeActivityIntentHelper.redirectToVeiwOrderSetType(getApplicationContext(),"Pending");
             }
         });
+        findViewById(R.id.btnApproveGoodsList).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChangeActivityIntentHelper.redirectToActivity(getApplicationContext(),GoodsReceiptVeiwOrders.class);
+            }
+        });
         findViewById(R.id.btnLogOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
