@@ -316,7 +316,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 obj.put("password",mPassword);
                 obj.put("type","Site Manager");
             }catch (JSONException jsonEx) {}
-            ANRequest request = AndroidNetworking.post(SiteManager.baseURL.concat("/authorizedEmployee/login"))
+            ANRequest request = AndroidNetworking.post(SiteManager.baseURL.concat("/authorizedEmployees/login"))
                     .setContentType("application/json;charset=UTF-8")
                     .setPriority(Priority.HIGH)
                     .addJSONObjectBody(obj)

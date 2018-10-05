@@ -18,7 +18,6 @@ public class Dashboard extends AppCompatActivity {
         this.setTitle("Site Manager Dashboard");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
         StrictMode.setThreadPolicy(policy);
-        SiteManager.logIn("sm1","password");
         SiteManager.automaticRedirectToLogout(this);
         AndroidNetworking.initialize(getApplicationContext());
 
