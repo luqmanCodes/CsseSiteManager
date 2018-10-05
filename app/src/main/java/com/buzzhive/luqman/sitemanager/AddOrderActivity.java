@@ -94,6 +94,7 @@ public class AddOrderActivity extends AppCompatActivity {
                                 .getAsJSONObject(new JSONObjectRequestListener() {
                                     @Override
                                     public void onResponse(JSONObject response) {
+                                        reInstateAdapter();
                                     }
 
                                     @Override

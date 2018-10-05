@@ -10,11 +10,11 @@ public class Item {
         this.id = itemId;
         this.quantity = quantity;
     }
-
     public Item(String itemName, int itemId) {
         this.name = itemName;
         this.id = itemId;
     }
+    public Item() {}
     public String toString(){
         return String.format("{'itemId':%d,'quantity':%d}",this.id,this.quantity);
     }

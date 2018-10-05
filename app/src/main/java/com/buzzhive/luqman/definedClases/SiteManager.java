@@ -50,7 +50,7 @@ public class  SiteManager {
     }
 
     public ArrayList<Item> getItems(Context con){
-        String uri = baseURL.concat("/item");
+        String uri = baseURL.concat("/items");
         ANRequest request = AndroidNetworking.get(uri).build();
         ANResponse<List<Item>> response = request.executeForObjectList(Item.class);
         if(response.isSuccess()) {
