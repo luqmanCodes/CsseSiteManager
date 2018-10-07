@@ -113,6 +113,8 @@ public class GoodsListApproval extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     lvGRItems.setAdapter(null);
                                     didClick = false;
+                                    Toast success = Toast.makeText(getApplicationContext(),"Successfully status is set as APPROVED",Toast.LENGTH_LONG);
+                                    success.show();
                                 }
 
                                 @Override
@@ -140,6 +142,8 @@ public class GoodsListApproval extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     lvGRItems.setAdapter(null);
                                     didClick = false;
+                                    Toast success = Toast.makeText(getApplicationContext(),"Successfully status is set as APPROVED",Toast.LENGTH_LONG);
+                                    success.show();
                                 }
 
                                 @Override

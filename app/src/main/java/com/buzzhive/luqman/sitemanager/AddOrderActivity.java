@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.buzzhive.luqman.definedClases.ChangeActivityIntentHelper;
 import com.buzzhive.luqman.definedClases.DateHelper;
 import com.buzzhive.luqman.definedClases.Item;
 import com.buzzhive.luqman.definedClases.PurchaseOrder;
@@ -94,7 +95,9 @@ public class AddOrderActivity extends AppCompatActivity {
                                 .getAsJSONObject(new JSONObjectRequestListener() {
                                     @Override
                                     public void onResponse(JSONObject response) {
-                                        reInstateAdapter();
+                                        Toast success = Toast.makeText(getApplicationContext(),"Added a Purchase Order Successfully",Toast.LENGTH_LONG);
+                                        success.show();
+                                        ChangeActivityIntentHelper.redirectToActivity(getApplicationContext(),Dashboard.class);
                                     }
 
                                     @Override
