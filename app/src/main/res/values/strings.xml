@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Site Manager</string>
+    <string name="app_name">Site Manager Login</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Site Manager ID</string>
     <string name="prompt_password">Password</string>

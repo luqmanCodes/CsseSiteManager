@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#00574b</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="logOutButton">#ee4141</color>
-    <color name="defaultButtonPrimary">#26F356</color>
+    <color name="logOutButton">#ee5151</color>
+    <color name="defaultButtonPrimary">#40c45f</color>
     <color name="logOutTint">#ffffff</color>
+    <color name="buttonTint">#000000</color>
+    <color name="list">#8be7de</color>
+    <color name="login">#6cd359</color>
 </resources>
