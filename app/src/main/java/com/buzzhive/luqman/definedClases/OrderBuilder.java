@@ -1,7 +1,5 @@
 package com.buzzhive.luqman.definedClases;
 
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,7 +76,7 @@ public class OrderBuilder {
         if(items.size() == 0) {
             throw new IllegalStateException("No items in Order");
         }
-        else if (this.siteManagerId.isEmpty() || this.status.isEmpty()
+        else if (this.siteManagerId == null|| this.status == null
                 || this.getInitialDate() == null || this.expectedDate == null){
             throw new IllegalStateException("Purchase Object fields missing");
         }
@@ -103,7 +101,6 @@ public class OrderBuilder {
             throw new IllegalStateException("Purchase Object fields missing");
         }
         else {
-            Log.d("dint","please");
             JSONObject retobject = new JSONObject();
             try {
                 retobject.put("siteManagerId",getSiteManagerId());
@@ -112,10 +109,9 @@ public class OrderBuilder {
                 retobject.put("initiatedDate",getInitialDate().toString());
                 retobject.put("expectedDate",getExpectedDate().toString());
             }catch(JSONException jsex) {
-                Log.d("happends",jsex.getMessage());
             }
-            Log.d("obj",retobject.toString());
             return retobject;
         }
     }
+    public ArrayList<Item> getArrayList(){return this.items;}
 }
